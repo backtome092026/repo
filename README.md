@@ -107,7 +107,7 @@ The four application variables are:
 
 For non-interactive or GitHub deployment, also set `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. These authenticate Wrangler and must not be added to `.env.cloudflare`, because that file is uploaded as Worker runtime secrets.
 
-Automatic deployment uses the repository's Cloudflare Git integration. Add the four application variables above under **Workers & Pages → repo → Settings → Variables and Secrets** and in the Cloudflare build environment. The generated Wrangler configuration declares every value as required, preserves dashboard values on later deploys, and consistently targets the `repo` Worker. `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are needed only for command-line or another CI deployment.
+Automatic deployment uses the repository's Cloudflare Git integration. Add the four application variables above to the Cloudflare build environment so the browser bundle is built correctly. After the first Worker deployment, add the same four values under **Workers & Pages → repo → Settings → Variables and Secrets**, encrypting `RESEND_API_KEY`, and redeploy. The generated Wrangler configuration preserves dashboard values on later deploys and consistently targets the `repo` Worker. `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are needed only for command-line or another CI deployment.
 
 After deployment, add the production URL in **Supabase → Authentication → URL Configuration**, verify the sending domain in Resend, attach any custom domain in the Worker’s **Settings → Domains & Routes**, and test search, login, OTP signup, claims, uploads, QR links, and CSV export.
 
