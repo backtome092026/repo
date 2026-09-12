@@ -1,0 +1,9 @@
+export type ItemStatus="FOUND"|"CLAIM_PENDING"|"CLAIM_APPROVED"|"RETURNED"|"DONATED"|"DISPOSED";
+export type Item={id:string;itemNumber:string;category:string;subcategory?:string;description:string;foundDate:string;foundLocation:string;publicLocation:string;storageLocation?:string;condition:string;estimatedValue:number;status:ItemStatus;photoUrl:string;internalNotes?:string;createdAt:string;returnedAt?:string};
+export type ClaimStatus="PENDING"|"APPROVED"|"REJECTED"|"COMPLETED";
+export type Claim={id:string;itemId:string;studentName:string;studentEmail:string;identifyingDetails:string;lostDate:string;lostLocation:string;status:ClaimStatus;createdAt:string};
+export type SchoolSettings={schoolName:string;averageReplacementValue:number;handlingMinutes:number;hourlyStaffCost:number;disposalCost:number;defaultStorageLocation:string;claimInstructions:string};
+export type Donation={id:string;title:string;description:string;category:string;condition:string;photoUrl:string|null;status:"AVAILABLE"|"RESERVED"|"GIVEN";donorName:string;createdAt:string};
+export type GoodDeed={id:string;studentName:string;photoUrl:string|null;caption:string;description:string;impact:string;lesson:string;motivation:string;motivatedBy:string;reactionCount:number;createdAt:string};
+export type Innovation={id:string;studentName:string;title:string;summary:string;problem:string;skillsNeeded:string[];teamSize:number;memberCount:number;status:"RECRUITING"|"BUILDING"|"COMPLETED";createdAt:string};
+export type LeaderboardRow={studentId:string;studentName:string;avatarUrl:string|null;score:number;count:number};

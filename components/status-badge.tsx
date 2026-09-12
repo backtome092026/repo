@@ -1,0 +1,2 @@
+import type {ItemStatus} from "@/types";const styles:Record<ItemStatus,string>={FOUND:"bg-emerald-50 text-emerald-700",CLAIM_PENDING:"bg-amber-50 text-amber-800",CLAIM_APPROVED:"bg-blue-50 text-blue-700",RETURNED:"bg-slate-100 text-slate-600",DONATED:"bg-violet-50 text-violet-700",DISPOSED:"bg-rose-50 text-rose-700"};
+export function StatusBadge({status}:{status:ItemStatus}){return <span className={`rounded-full px-2.5 py-1 text-xs font-bold ${styles[status]}`}>{status.replaceAll("_"," ")}</span>}

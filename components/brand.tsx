@@ -1,0 +1,2 @@
+import Link from "next/link";import {PackageCheck} from "lucide-react";
+export function Brand({inverse=false}:{inverse?:boolean}){return <Link href="/" className={`inline-flex items-center gap-2 font-black tracking-[-.04em] text-xl ${inverse?"text-white":"text-[#172b4d]"}`}><span className="grid size-9 place-items-center rounded-xl bg-[#ea6b55] text-white"><PackageCheck className="size-5"/></span><span>Back<span className="text-[#ea6b55]">2</span>Me</span></Link>}

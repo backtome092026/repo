@@ -1,0 +1,1 @@
+"use client";import {Download,Printer} from "lucide-react";import {Button} from "@/components/ui/button";export function ReportActions(){return <div className="flex gap-2"><Button variant="outline" onClick={()=>window.print()}><Printer/>Print / PDF</Button><Button asChild><a href="/api/reports/csv"><Download/>Export CSV</a></Button></div>}

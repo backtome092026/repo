@@ -1,0 +1,1 @@
+import {NewItemForm} from "@/components/new-item-form";import {StaffShell} from "@/components/staff-shell";export default function NewItem(){return <StaffShell title="Log a found item"><NewItemForm/></StaffShell>}

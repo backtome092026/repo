@@ -1,0 +1,1 @@
+import {SettingsForm} from "@/components/settings-form";import {StaffShell} from "@/components/staff-shell";import {getDashboardData} from "@/lib/data";export default async function Settings(){const{settings}=await getDashboardData();return <StaffShell title="School settings"><SettingsForm s={settings}/></StaffShell>}
