@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/native-link";
 import {ArrowLeft,Sparkles} from "lucide-react";
 import {Brand} from "@/components/brand";
 import {DemoRolePicker} from "@/components/demo-role-picker";

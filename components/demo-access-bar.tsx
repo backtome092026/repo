@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/native-link";
 import {useRouter} from "next/navigation";
 import {GraduationCap,HeartHandshake,LayoutDashboard,School,Search,Sparkles,Users} from "lucide-react";
 
