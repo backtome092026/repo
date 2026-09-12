@@ -26,7 +26,6 @@ const localBindingConfig = {
       "NEXT_PUBLIC_SUPABASE_ANON_KEY",
       "RESEND_API_KEY",
       "RESEND_FROM_EMAIL",
-      "OTP_SIGNING_SECRET",
     ],
   },
   d1_databases: d1
