@@ -87,13 +87,31 @@ Point the new school’s staff profiles to that UUID. RLS scopes operational acc
 
 Brand tokens are in `app/globals.css`. Shared brand/navigation components are `components/brand.tsx`, `components/public-header.tsx`, and `components/staff-shell.tsx`. Each screen is in its matching `app/` folder.
 
-## Deploy to Vercel
+## Deploy to Cloudflare Workers
 
-1. Create a GitHub repository and push this folder.
-2. Import it in Vercel as a Next.js project.
-3. Add both Supabase variables to Preview and Production.
-4. Deploy and add the Vercel URL in **Supabase → Authentication → URL Configuration**.
-5. Test search, login, claims, photos, QR links, and CSV export on the deployed URL.
+Back2Me builds to a Cloudflare Worker with static assets. For a first deployment:
+
+```bash
+cp .env.cloudflare.example .env.cloudflare
+openssl rand -hex 32
+# Add that random value and the other required values to .env.cloudflare.
+npx wrangler login
+npm run deploy:cloudflare
+```
+
+The five application variables are:
+
+- `NEXT_PUBLIC_SUPABASE_URL` — Supabase project URL; public and embedded into the browser build.
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` — Supabase publishable/anon key; public, with access constrained by RLS.
+- `RESEND_API_KEY` — server-only API key used to send signup verification codes.
+- `RESEND_FROM_EMAIL` — sender on a domain verified in Resend; `onboarding@resend.dev` is for testing only.
+- `OTP_SIGNING_SECRET` — server-only random signing key of at least 32 characters.
+
+For non-interactive or GitHub deployment, also set `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. These authenticate Wrangler and must not be added to `.env.cloudflare`, because that file is uploaded as Worker runtime secrets.
+
+Automatic deployment uses the repository's Cloudflare Git integration. Add the five application variables above under **Workers & Pages → repo → Settings → Variables and Secrets** and in the Cloudflare build environment. The generated Wrangler configuration declares every value as required, preserves dashboard values on later deploys, and consistently targets the `repo` Worker. `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are needed only for command-line or another CI deployment.
+
+After deployment, add the production URL in **Supabase → Authentication → URL Configuration**, verify the sending domain in Resend, attach any custom domain in the Worker’s **Settings → Domains & Routes**, and test search, login, OTP signup, claims, uploads, QR links, and CSV export.
 
 ## Impact formulas
 

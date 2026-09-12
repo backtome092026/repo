@@ -1,5 +1,5 @@
 export type ItemStatus="FOUND"|"CLAIM_PENDING"|"CLAIM_APPROVED"|"RETURNED"|"DONATED"|"DISPOSED";
-export type Item={id:string;itemNumber:string;category:string;subcategory?:string;description:string;foundDate:string;foundLocation:string;publicLocation:string;storageLocation?:string;condition:string;estimatedValue:number;status:ItemStatus;photoUrl:string;internalNotes?:string;createdAt:string;returnedAt?:string};
+export type Item={id:string;itemNumber:string;category:string;color?:string;subcategory?:string;description:string;foundDate:string;foundLocation:string;publicLocation:string;storageLocation?:string;condition:string;estimatedValue:number;status:ItemStatus;photoUrl:string;internalNotes?:string;createdAt:string;returnedAt?:string};
 export type ClaimStatus="PENDING"|"APPROVED"|"REJECTED"|"COMPLETED";
 export type Claim={id:string;itemId:string;studentName:string;studentEmail:string;identifyingDetails:string;lostDate:string;lostLocation:string;status:ClaimStatus;createdAt:string};
 export type SchoolSettings={schoolName:string;averageReplacementValue:number;handlingMinutes:number;hourlyStaffCost:number;disposalCost:number;defaultStorageLocation:string;claimInstructions:string};

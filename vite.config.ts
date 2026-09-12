@@ -14,8 +14,21 @@ const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
 const managedLinux = readExecutionProfile() === "managed-linux";
 
 const localBindingConfig = {
+  name: "repo",
   main: "vinext/server/fetch-handler",
+  keep_vars: true,
+  workers_dev: true,
+  preview_urls: false,
   compatibility_flags: ["nodejs_compat"],
+  secrets: {
+    required: [
+      "NEXT_PUBLIC_SUPABASE_URL",
+      "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+      "RESEND_API_KEY",
+      "RESEND_FROM_EMAIL",
+      "OTP_SIGNING_SECRET",
+    ],
+  },
   d1_databases: d1
     ? [
         {
